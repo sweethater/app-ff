@@ -19,7 +19,9 @@ $(window).load(function() {
 $(document).ready(function() {
 	hide_body_parts();
 	$("#loader").fadeOut("slow");
-	
+
+	setInterval(displayTime, 1000);
+
 	$( "img" ).mousedown(function(){return false;});
 	$( "a" ).mousedown(function(){return false;});
 
@@ -281,4 +283,17 @@ function pause_video(player){
 function stop_video(player){
 	player.pause();
 	player.setCurrentTime(0);
+}
+
+function displayTime() {
+	var currentTime = new Date();
+	var hours = currentTime.getHours();
+	var minutes = currentTime.getMinutes();
+	if (minutes < 10) {
+		    minutes = "0" + minutes;
+		}
+	if (hours < 10) {
+		    hours = "0" + hours;
+		}
+	document.getElementById('clock').textContent = hours + ":" + minutes;
 }
